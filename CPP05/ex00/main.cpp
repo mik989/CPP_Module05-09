@@ -8,7 +8,8 @@ int main()
         std::cout << Pippo << std::endl;
         Pippo.increment_grade();
         std::cout << Pippo << std::endl;
-        Bureaucrat Luca = Pippo;
+        Bureaucrat Luca("Luca", 49);
+        Luca = Pippo;
         std::cout << Luca << std::endl;
         Pippo.decrement_grade();
         std::cout << Pippo << std::endl;

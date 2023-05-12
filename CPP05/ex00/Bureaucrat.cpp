@@ -12,12 +12,15 @@ Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
 
 Bureaucrat::Bureaucrat(const Bureaucrat& ref) :_name(ref._name)
 {
+    std::cout << " COPY CONSTRUCTOR CALLED" << std::endl;
     *this = ref;
     return;
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& ref)
 {
+    std::cout << " OVERLOAD OPERATOR CALLED" << std::endl;
+
     if(this != &ref)
         this->_grade = ref._grade;
     return *this;
