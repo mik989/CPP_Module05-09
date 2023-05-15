@@ -1,7 +1,7 @@
-NAME = array
+NAME = span
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -Wshadow -Wno-shadow -std=c++98 -g
-SRCS = main.cpp
+SRCS = main.cpp Span.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
