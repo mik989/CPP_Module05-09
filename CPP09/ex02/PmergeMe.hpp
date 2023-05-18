@@ -11,18 +11,22 @@
 #include <vector>
 #include <regex>
 #include <cstdio>
+#include <deque>
 
 class PmergeMe
 {
     public:
-        PmergeMe(std::string **strlist);
+        PmergeMe(int ac, char **strlist);
         ~PmergeMe();
         void sortList();
         void createList();
-        void merge_sort(std::list<int>& lst); 
+        template <typename T>
+        void merge_sort(T& lst); 
     private:
         std::list<int> _lst;
-        std::string **_strlist;
+        std::deque<int> _lst1;
+        char **_strlist;
+        int _ac;
        
 };
 
