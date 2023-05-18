@@ -137,7 +137,7 @@ void PmergeMe::merge_sort(T& lst)
         return;
     }
     T left, right;
-    auto middle_it = std::next(lst.begin(), lst.size() / 2);
+    typename T::iterator middle_it = std::next(lst.begin(), lst.size() / 2);
     std::move(lst.begin(), middle_it, std::back_inserter(left));
     std::move(middle_it, lst.end(), std::back_inserter(right));
 
@@ -150,29 +150,29 @@ void PmergeMe::merge_sort(T& lst)
 void PmergeMe::sortList()
 {
     std::cout << "Before List : ";
-    for (auto n : this->_lst) 
+    for (std::list<int>::iterator it = this->_lst.begin(); it != this->_lst.end(); ++it)
     {
-        std::cout << n << " ";
+        std::cout << *it << " ";
     }
     std::cout << std::endl;
-    
-    auto start = std::chrono::high_resolution_clock::now();
-    merge_sort(this->_lst);
-    auto end = std::chrono::high_resolution_clock::now();
 
-    auto start1 = std::chrono::high_resolution_clock::now();
+    std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
+    merge_sort(this->_lst);
+    std::chrono::high_resolution_clock::time_point end = std::chrono::high_resolution_clock::now();
+
+    std::chrono::high_resolution_clock::time_point start1 = std::chrono::high_resolution_clock::now();
     merge_sort(this->_lst1);
-    auto end1 = std::chrono::high_resolution_clock::now();
+    std::chrono::high_resolution_clock::time_point end1 = std::chrono::high_resolution_clock::now();
 
     std::cout << "After List : ";
-    for (auto n : this->_lst) 
+    for (std::list<int>::iterator it = this->_lst.begin(); it != this->_lst.end(); ++it)
     {
-        std::cout << n << " ";
+        std::cout << *it << " ";
     }
     std::cout << std::endl;
-   
-    auto time = std::chrono::duration_cast<std::chrono::microseconds>(end - start);
-    auto time1 = std::chrono::duration_cast<std::chrono::microseconds>(end1 - start1);
-    std::cout << "Time to process a range of " << this->_lst.size() << " elements with std::list: " << time.count() << " us" << std::endl;
-    std::cout << "Time to process a range of " << this->_lst1.size() << " elements with std::deque: " << time1.count() << " us" << std::endl;
+
+    long long time = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+    long long time1 = std::chrono::duration_cast<std::chrono::microseconds>(end1 - start1).count();
+    std::cout << "Time to process a range of " << this->_lst.size() << " elements with std::list: " << time << " us" << std::endl;
+    std::cout << "Time to process a range of " << this->_lst1.size() << " elements with std::deque: " << time1 << " us" << std::endl;
 }
